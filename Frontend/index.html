@@ -1,11 +1,197 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f7f7fc">
+
+  <title>Let's Talk | Contact Us</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <p>hello</p>
+
+  <header class="navbar">
+    <a href="#" class="brand">hello<span>.</span></a>
+
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <a href="#contact" class="nav-button">Let's talk ↗</a>
+  </header>
+
+  <main id="home" class="page-wrapper">
+
+    <section class="intro">
+      <span class="eyebrow">
+        <span class="status-dot"></span>
+        WE'RE HERE FOR YOU
+      </span>
+
+      <h1>Have an idea?<br>
+        <span>Let's make it happen.</span>
+      </h1>
+
+      <p>
+        Great things start with a conversation.
+        Tell us what's on your mind and let's build
+        something amazing together.
+      </p>
+    </section>
+
+    <section class="contact-container" id="contact">
+
+      <aside class="contact-info">
+        <div class="info-content">
+          <span class="small-label">CONTACT INFORMATION</span>
+
+          <h2>Let's talk about your next big thing.</h2>
+
+          <p class="info-description">
+            Have a question or need help? We're just
+            a message away.
+          </p>
+
+          <div class="info-list">
+
+            <a class="info-item" href="mailto:hello@example.com">
+              <span class="info-icon">✉</span>
+              <span>
+                <small>EMAIL US</small>
+                <strong>hello@example.com</strong>
+              </span>
+              <span class="item-arrow">↗</span>
+            </a>
+
+            <a class="info-item" href="tel:+911234567890">
+              <span class="info-icon">☎</span>
+              <span>
+                <small>CALL US</small>
+                <strong>+91 12345 67890</strong>
+              </span>
+              <span class="item-arrow">↗</span>
+            </a>
+
+            <div class="info-item">
+              <span class="info-icon">⌖</span>
+              <span>
+                <small>OUR LOCATION</small>
+                <strong>Gurugram, India</strong>
+              </span>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="decorative-circle circle-one"></div>
+        <div class="decorative-circle circle-two"></div>
+
+        <div class="social-area">
+          <span>LET'S CONNECT</span>
+          <div class="social-links">
+            <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer" aria-label="LinkedIn">in</a>
+            <a href="https://www.instagram.com/" target="_blank" rel="noreferrer" aria-label="Instagram">ig</a>
+            <a href="https://github.com/" target="_blank" rel="noreferrer" aria-label="GitHub">gh</a>
+          </div>
+        </div>
+      </aside>
+
+      <div class="form-panel">
+        <div class="form-heading">
+          <span class="form-tag">GET IN TOUCH</span>
+          <h2>Send us a message<span>.</span></h2>
+          <p>Fill in the details and we'll get back to you.</p>
+        </div>
+
+        <form id="contactForm">
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Full name <span>*</span></label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="John Doe"
+                autocomplete="name"
+                maxlength="100"
+                required
+              >
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email address <span>*</span></label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="john@example.com"
+                autocomplete="email"
+                maxlength="254"
+                required
+              >
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="subject">Subject <span>*</span></label>
+            <input
+              type="text"
+              id="subject"
+              name="subject"
+              placeholder="What would you like to discuss?"
+              maxlength="150"
+              required
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="message">Your message <span>*</span></label>
+            <textarea
+              id="message"
+              name="message"
+              placeholder="Tell us more about your idea..."
+              rows="5"
+              maxlength="3000"
+              required
+            ></textarea>
+            <div class="field-footer">
+              <span>Be as detailed as you like.</span>
+              <span id="charCount">0 / 3000</span>
+            </div>
+          </div>
+
+          <button type="submit" id="submitButton">
+            <span>Send message</span>
+            <span class="button-arrow">↗</span>
+          </button>
+
+          <p id="status" role="status" aria-live="polite"></p>
+
+          <div class="privacy-note">
+            <span>♧</span>
+            Your information is handled with care.
+          </div>
+
+        </form>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <span>© 2026 hello. Made with care.</span>
+      <a href="#home">Back to top ↑</a>
+    </footer>
+
+  </main>
+
+  <script src="script.js"></script>
 </body>
 </html>
+
