@@ -9,9 +9,20 @@ dotenv.config();
 
 const app: Application = express();
 
-// Middleware
-app.use(cors());
+
+const allowedOrigins = [
+  "http://localhost:5500",
+  "http://127.0.0.1:5500",
+];
+
+app.use(cors({
+  origin: allowedOrigins,
+  methods: ["GET", "POST", "OPTIONS"],
+  allowedHeaders: ["Content-Type"],
+}));
+
 app.use(express.json());
+
 
 // Health check route
 app.get("/", (_req: Request, res: Response) => {
@@ -33,7 +44,7 @@ app.use((_req: Request, res: Response) => {
 });
 
 // Start server after MongoDB connects
-const PORT = Number(process.env.PORT) || 5000;
+const PORT = Number(process.env.PORT) || 5001;
 
 const startServer = async (): Promise<void> => {
   try {

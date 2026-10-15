@@ -1,16 +1,17 @@
 
+
 const contactForm = document.getElementById("contactForm");
 const statusMessage = document.getElementById("status");
 const submitButton = document.getElementById("submitButton");
 const messageInput = document.getElementById("message");
 const charCount = document.getElementById("charCount");
 
-// Connect the message character counter
+// Update the message character counter
 messageInput.addEventListener("input", () => {
   charCount.textContent = `${messageInput.value.length} / 3000`;
 });
 
-// Submit the contact form to the backend
+// Submit the contact form
 contactForm.addEventListener("submit", async (event) => {
   event.preventDefault();
 
@@ -18,56 +19,45 @@ contactForm.addEventListener("submit", async (event) => {
     name: document.getElementById("name").value.trim(),
     email: document.getElementById("email").value.trim(),
     subject: document.getElementById("subject").value.trim(),
-    message: messageInput.value.trim(),
+    message: messageInput.value.trim()
   };
 
-  // Prevent empty or whitespace-only fields
+  // Validate required fields
   if (
     !contactData.name ||
     !contactData.email ||
     !contactData.subject ||
     !contactData.message
   ) {
-    statusMessage.textContent = "Please fill in all required fields.";
+    statusMessage.textContent =
+      "Please fill in all required fields.";
     statusMessage.style.color = "red";
     return;
   }
 
   // Show loading state
   const buttonText = submitButton.querySelector("span");
-  const originalText = buttonText.textContent;
+  const originalText = buttonText
+    ? buttonText.textContent
+    : submitButton.textContent;
 
   submitButton.disabled = true;
-  buttonText.textContent = "Sending...";
+
+  if (buttonText) {
+    buttonText.textContent = "Sending...";
+  } else {
+    submitButton.textContent = "Sending...";
+  }
+
   statusMessage.textContent = "Submitting your message...";
   statusMessage.style.color = "inherit";
-  
-  const formData = {
-  name: document.getElementById("name").value.trim(),
-  email: document.getElementById("email").value.trim(),
-  subject: document.getElementById("subject").value.trim(),
-  message: document.getElementById("message").value.trim()
-};
+
   try {
-    const response = await fetch(
-  "http://192.168.0.155:5000/api/contact",
-  {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(formData)
-  }
-);
-
-    const result = await response.json();
-
-    if (!response.ok) {
-      throw new Error(result.message || "Failed to send your message.");
-    }
+    // Send data using api.js
+    const result = await sendContactMessage(contactData);
 
     statusMessage.textContent =
-      "Your message was sent successfully!";
+      result.message || "Your message was sent successfully!";
     statusMessage.style.color = "green";
 
     contactForm.reset();
@@ -83,6 +73,11 @@ contactForm.addEventListener("submit", async (event) => {
     statusMessage.style.color = "red";
   } finally {
     submitButton.disabled = false;
-    buttonText.textContent = originalText;
+
+    if (buttonText) {
+      buttonText.textContent = originalText;
+    } else {
+      submitButton.textContent = originalText;
+    }
   }
 });
